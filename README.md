@@ -62,6 +62,35 @@ added stuff
 
 The app will be available at [http://localhost:8080](http://localhost:8080).
 
+## Database Migrations
+
+This project uses [Flyway](https://flywaydb.org/) for database migrations. Migration files are located in `src/main/resources/db/migration/`.
+
+### Run migrations automatically
+
+Migrations run automatically when you start the application.
+
+### Run migrations manually
+
+```bash
+DB_URL=jdbc:mysql://localhost:3306/pos DB_USER_NAME=root DB_PASSWORD= ./mvnw flyway:migrate
+```
+
+### Other Flyway commands
+
+```bash
+# Check migration status
+./mvnw flyway:info
+
+# Repair failed migrations (cleans up failed migration records)
+./mvnw flyway:repair
+
+# Validate migrations
+./mvnw flyway:validate
+```
+
+Note: Set `DB_URL`, `DB_USER_NAME`, and `DB_PASSWORD` environment variables before running Flyway commands.
+
 ## Build
 
 ```bash

@@ -18,6 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class Role {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotEmpty(message = "Role name cannot be empty")

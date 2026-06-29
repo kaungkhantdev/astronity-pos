@@ -73,7 +73,7 @@
                     <p class="text-gray-400 text-sm mb-8">Sign in to your account to continue</p>
 
                     <div th:if="${param.error}" class="mb-4 p-4 bg-red-50 rounded-lg">
-                        <p class="text-red-600 text-sm">Invalid username or password</p>
+                        <p class="text-red-600 text-sm">Invalid email or password</p>
                     </div>
 
                     <div th:if="${param.logout}" class="mb-4 p-4 bg-green-50 rounded-lg">
@@ -82,17 +82,17 @@
 
                     <form th:action="@{/login}" method="post" class="space-y-5">
 
-                        <!-- Username -->
+                        <!-- Email -->
                         <div class="space-y-1.5">
-                            <label for="username" class="text-sm font-medium text-gray-700">Username</label>
+                            <label for="email" class="text-sm font-medium text-gray-700">Email</label>
                             <div class="relative">
                                     <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400">
                                         <i class="hgi-stroke hgi-user-add-01 text-base"></i>
                                     </span>
                                 <input type="text"
-                                       id="username" name="username"
+                                       id="email" name="email"
                                        required
-                                       placeholder="Enter your username"
+                                       placeholder="Enter your email"
                                        class="input input-bordered w-full pl-10 pr-4 rounded-lg bg-gray-50 border-gray-200 focus:outline-none focus:border-orange-400 text-sm text-gray-700 h-11"/>
                             </div>
                         </div>

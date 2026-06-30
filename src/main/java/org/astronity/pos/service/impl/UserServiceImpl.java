@@ -10,10 +10,13 @@ import org.astronity.pos.repository.RoleRepository;
 import org.astronity.pos.repository.UserRepository;
 import org.astronity.pos.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -31,28 +34,24 @@ public class UserServiceImpl implements UserService {
     }
     
     @Override
-    public void saveUser(UserDto userDto)
+    public User saveUser(UserDto userDto)
     {
-        User user = new User();
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setEmail(userDto.getEmail());
-        // hashed password
-        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-
-        // assign role
         Role role = this.findRoleByName("ROLE_USER");
-        user.getUserRoles().add(this.buildUserRole(user, role));
-
-        userRepository.save(user);
+        return this.save(userDto, role);
 
     }
 
     @Override
-    public User findByEmail(String email)
+    public User saveAdmin(UserDto userDto)
     {
-        return this.userRepository.findByEmail(email)
-                .orElseThrow(() -> new UserNotFoundException("User email - "+ email +" is not found."));
+        Role role = this.findRoleByName("ROLE_ADMIN");
+        return this.save(userDto, role);
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email)
+    {
+        return this.userRepository.findByEmail(email);
     }
 
     @Override
@@ -62,6 +61,18 @@ public class UserServiceImpl implements UserService {
                 .stream()
                 .map(this::mapToUserDto)
                 .toList();
+    }
+
+    private User save(UserDto userDto, Role role)
+    {
+        User user = new User();
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        user.setEmail(userDto.getEmail());
+        // hashed password
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.getUserRoles().add(this.buildUserRole(user, role));
+        return userRepository.save(user);
     }
 
     private Role findRoleByName(String name)

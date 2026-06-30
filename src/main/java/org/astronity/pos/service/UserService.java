@@ -4,9 +4,12 @@ import org.astronity.pos.dto.UserDto;
 import org.astronity.pos.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
-    void saveUser(UserDto userDto);
-    User findByEmail(String email);
+    User saveUser(UserDto userDto);
+    User saveAdmin(UserDto userDto);
+
+    Optional<User> findByEmail(String email);
     List<UserDto> findAllUsers();
 }

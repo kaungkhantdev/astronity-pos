@@ -1,5 +1,6 @@
 package org.astronity.pos.security;
 
+import jakarta.transaction.Transactional;
 import org.astronity.pos.exception.UserNotFoundException;
 import org.astronity.pos.model.User;
 import org.astronity.pos.repository.UserRepository;
@@ -23,6 +24,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UserNotFoundException("User not found with email: " + email));

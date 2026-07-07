@@ -10,7 +10,7 @@ public class ProductController {
     @GetMapping()
     public String index()
     {
-        return "pages/products/list";
+        return "pos/products/index";
     }
 
     @GetMapping("/{id}")

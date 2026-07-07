@@ -10,7 +10,7 @@ public class UserController {
     @GetMapping()
     public String index()
     {
-        return "pages/users/list";
+        return "pos/users/index";
     }
 
     @GetMapping("/{id}")

@@ -10,25 +10,25 @@ public class ProductController {
     @GetMapping()
     public String index()
     {
-        return "pages/product/list";
+        return "pages/products/list";
     }
 
     @GetMapping("/{id}")
     public String show()
     {
-        return "pages/product/show";
+        return "pages/products/show";
     }
 
     @GetMapping("/new")
     public String create()
     {
-        return "pages/product/create";
+        return "pages/products/create";
     }
 
     @GetMapping("/{id}/edit")
     public String edit()
     {
-        return "pages/product/edit";
+        return "pages/products/edit";
     }
 }
 

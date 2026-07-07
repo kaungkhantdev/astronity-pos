@@ -10,24 +10,24 @@ public class UserController {
     @GetMapping()
     public String index()
     {
-        return "pages/user/list";
+        return "pages/users/list";
     }
 
     @GetMapping("/{id}")
     public String show()
     {
-        return "pages/user/show";
+        return "pages/users/show";
     }
 
     @GetMapping("/new")
     public String create()
     {
-        return "pages/user/create";
+        return "pages/users/create";
     }
 
     @GetMapping("/{id}/edit")
     public String edit()
     {
-        return "pages/user/edit";
+        return "pages/users/edit";
     }
 }

@@ -10,6 +10,6 @@ public class ReportController {
     @GetMapping()
     public String index()
     {
-        return "pages/report/list";
+        return "pages/reports/list";
     }
 }

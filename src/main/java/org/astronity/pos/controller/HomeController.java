@@ -14,7 +14,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model) {
-        return "pages/dashboard/index";
+        return "pages/home/index";
     }
 
     @GetMapping("/hello")

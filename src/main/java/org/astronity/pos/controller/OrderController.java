@@ -10,6 +10,6 @@ public class OrderController {
     @GetMapping()
     public String index()
     {
-        return "pages/order/list";
+        return "pages/orders/list";
     }
 }

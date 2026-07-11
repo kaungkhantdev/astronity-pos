@@ -1,15 +1,15 @@
-package org.astronity.pos.controller;
+package org.astronity.pos.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/reports")
-public class ReportController {
-    @GetMapping()
-    public String index()
+@RequestMapping("/dashboard")
+public class DashboardController {
+    @GetMapping
+    public String admin()
     {
-        return "pos/reports/index";
+        return "pos/dashboard/index";
     }
 }
